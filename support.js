@@ -16,7 +16,7 @@
     if (!RD) throw new Error("dc-runtime: window.ReactDOM is not available yet");
     return RD;
   }
-  var h = ((...args) => getReact().createElement(
+  var h = ((...args) => getReact().createElement( 
     ...args
   ));
 

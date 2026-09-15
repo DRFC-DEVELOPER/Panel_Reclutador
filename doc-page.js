@@ -14,7 +14,7 @@
  *   <section class="page"> child per page. Use when the user asks for a
  *   specific page count, or the design implies one: a one-page resume, a
  *   two-sided flier, a poster, a certificate, a brochure — any richly
- *   laid-out document without a single text flow.
+ *   laid-out document without a single text flow. 
  * - If in doubt, ask the user as part of the build.
  *
  * PAGE SIZING — paper differs by country (letter vs A4), so the printed
