@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<template id="__bundler_thumbnail" data-bg-color="#f2f2f3">
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="800" fill="#f2f2f3"/>
+<g stroke="#5980a6" stroke-width="10" fill="none">
+<rect x="360" y="200" width="480" height="400"/>
+<path d="M360 300h480M360 400h480M360 500h480M520 200v400"/>
+</g>
+<g fill="#5980a6">
+<rect x="400" y="238" width="80" height="24"/>
+<rect x="560" y="238" width="180" height="24"/>
+<rect x="560" y="338" width="140" height="24"/>
+<rect x="560" y="438" width="200" height="24"/>
+<rect x="560" y="538" width="120" height="24"/>
+</g>
+</svg>
+</template>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/industry-ccb68643-9b4e-475a-be2a-a7a96a168477/styles.css">
+<script src="_ds/industry-ccb68643-9b4e-475a-be2a-a7a96a168477/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#f2f2f3}
+a{color:#5980a6}
+a:hover{color:#416180}
+.btn{white-space:nowrap;flex:none}
+.cand-row{cursor:pointer}
+.cand-row:hover{background:#eef6ff}
+.slot:hover{border-color:#5980a6}
+</style>
+</helmet>
+<div style="min-height:100vh;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);font-size:15px">
+
+<div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 28px;border-bottom:1px solid var(--color-divider);background:var(--color-bg);position:sticky;top:0;z-index:5">
+<div style="display:flex;align-items:baseline;gap:14px">
+<span style="font-family:var(--font-heading);font-weight:700;font-size:20px;letter-spacing:.02em">DRFC</span>
+<span style="font-family:var(--font-heading);font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-700)">Reclutamiento IA</span>
+</div>
+<div style="display:flex;align-items:center;gap:18px;font-size:12.5px;color:color-mix(in srgb, var(--color-text) 55%, transparent)">
+<span>Sincronizado con <code style="font-family:ui-monospace,Menlo,monospace">evaluaciones</code></span>
+<span style="display:flex;align-items:center;gap:6px"><i style="width:7px;height:7px;background:var(--color-accent);display:block"></i>Reclutadora · L. Márquez</span>
+</div>
+</div>
+
+<sc-if value="{{ enVacantes }}" hint-placeholder-val="{{ true }}">
+<div style="padding:28px 28px 56px;max-width:1320px">
+<div style="margin-bottom:24px">
+<h1 style="font-size:38px;margin:0 0 4px">Vacantes activas</h1>
+<p style="margin:0;font-size:13.5px;color:color-mix(in srgb, var(--color-text) 55%, transparent)">Elige una vacante para revisar sus candidatos evaluados por IA.</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px">
+<sc-for list="{{ tarjetas }}" as="v" hint-placeholder-count="4">
+<div class="blueprint" style="padding:20px 22px;display:flex;flex-direction:column;gap:14px">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div>
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:color-mix(in srgb, var(--color-text) 55%, transparent);margin-bottom:4px">{{ v.id }}</div>
+<h2 style="font-size:26px;margin:0 0 6px">{{ v.titulo }}</h2>
+<div style="font-family:var(--font-heading);font-size:15px;letter-spacing:.03em;color:var(--color-accent-700)">{{ v.salario }}</div>
+</div>
+<p style="margin:0;font-size:13px;line-height:1.5;color:color-mix(in srgb, var(--color-text) 68%, transparent)">{{ v.requisitos }}</p>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider)">
+<div style="padding:10px 0">
+<div style="font-family:var(--font-heading);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 55%, transparent)">Evaluados</div>
+<div style="font-family:var(--font-heading);font-size:24px;line-height:1.1">{{ v.total }}</div>
+</div>
+<div style="padding:10px 0">
+<div style="font-family:var(--font-heading);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 55%, transparent)">Avanzar</div>
+<div style="font-family:var(--font-heading);font-size:24px;line-height:1.1;color:#2f6b46">{{ v.avanzar }}</div>
+</div>
+<div style="padding:10px 0">
+<div style="font-family:var(--font-heading);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 55%, transparent)">Agendadas</div>
+<div style="font-family:var(--font-heading);font-size:24px;line-height:1.1;color:var(--color-accent-700)">{{ v.agendadas }}</div>
+</div>
+<div style="padding:10px 0">
+<div style="font-family:var(--font-heading);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 55%, transparent)">Score top</div>
+<div style="font-family:var(--font-heading);font-size:24px;line-height:1.1">{{ v.mejor }}</div>
+</div>
+</div>
+<button class="btn btn-primary" type="button" onClick="{{ v.onPick }}" style="width:100%">Ver candidatos</button>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ enLista }}" hint-placeholder-val="{{ false }}">
+<div style="padding:22px 28px 56px;max-width:1320px">
+<button class="btn btn-ghost" type="button" onClick="{{ onVerVacantes }}" style="margin-bottom:12px;padding-left:0">← Vacantes activas</button>
+
+<div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px">
+<div>
+<h1 style="font-size:38px;margin:0 0 4px">{{ tituloLista }}</h1>
+<p style="margin:0;font-size:13.5px;color:color-mix(in srgb, var(--color-text) 55%, transparent)">Evaluación automática por IA sobre CV y conversación de WhatsApp. Clic en una fila para ver el detalle.</p>
+</div>
+<div style="display:flex;gap:8px">
+<button class="btn btn-secondary" type="button">Exportar CSV</button>
+<button class="btn btn-primary blueprint" type="button" style="position:relative">Actualizar<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></button>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0;border:1px solid var(--color-divider);margin-bottom:24px">
+<div style="padding:16px 18px;border-right:1px solid var(--color-divider)">
+<div style="font-family:var(--font-heading);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 55%, transparent)">Evaluados</div>
+<div style="font-family:var(--font-heading);font-size:34px;line-height:1.1">{{ kpiTotal }}</div>
+</div>
+<div style="padding:16px 18px;border-right:1px solid var(--color-divider)">
+<div style="font-family:var(--font-heading);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 55%, transparent)">Avanzar</div>
+<div style="font-family:var(--font-heading);font-size:34px;line-height:1.1;color:#2f6b46">{{ kpiAvanzar }}</div>
+</div>
+<div style="padding:16px 18px;border-right:1px solid var(--color-divider)">
+<div style="font-family:var(--font-heading);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 55%, transparent)">Revisar manualmente</div>
+<div style="font-family:var(--font-heading);font-size:34px;line-height:1.1;color:#8a6a12">{{ kpiRevisar }}</div>
+</div>
+<div style="padding:16px 18px">
+<div style="font-family:var(--font-heading);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 55%, transparent)">Entrevistas agendadas</div>
+<div style="font-family:var(--font-heading);font-size:34px;line-height:1.1;color:var(--color-accent-700)">{{ kpiAgendadas }}</div>
+</div>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;padding-bottom:14px;border-bottom:1px solid var(--color-divider);margin-bottom:2px">
+<div class="field" style="flex:1 1 230px;min-width:0">
+<label style="font-family:var(--font-heading);font-size:12px;letter-spacing:.12em;text-transform:uppercase">Buscar por nombre</label>
+<input class="input" type="text" placeholder="Ej. Ramírez" value="{{ busqueda }}" onChange="{{ onBuscar }}" style="width:100%">
+</div>
+<div class="field" style="flex:0 1 220px">
+<label style="font-family:var(--font-heading);font-size:12px;letter-spacing:.12em;text-transform:uppercase">Vacante</label>
+<select class="input" value="{{ filtroVacante }}" onChange="{{ onVacante }}" style="width:100%">
+<sc-for list="{{ vacantes }}" as="v" hint-placeholder-count="4">
+<option value="{{ v.value }}">{{ v.label }}</option>
+</sc-for>
+</select>
+</div>
+<div class="field" style="flex:0 0 auto">
+<label style="font-family:var(--font-heading);font-size:12px;letter-spacing:.12em;text-transform:uppercase">Recomendación</label>
+<div class="seg" style="display:flex">
+<sc-for list="{{ filtrosRec }}" as="f" hint-placeholder-count="4">
+<button class="seg-opt" type="button" onClick="{{ f.onPick }}" style="background:{{ f.bg }};color:{{ f.color }};font-family:var(--font-heading);font-size:13.5px;letter-spacing:.04em;padding:7px 13px;border:0;border-right:1px solid var(--color-divider);cursor:pointer">{{ f.label }}</button>
+</sc-for>
+</div>
+</div>
+<button class="btn btn-secondary" type="button" onClick="{{ onOrden }}" style="margin-bottom:2px">{{ etiquetaOrden }}</button>
+</div>
+
+<table class="table" style="width:100%;border-collapse:collapse;font-size:14px">
+<thead>
+<tr>
+<th style="text-align:left;font-family:var(--font-heading);font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:11px 10px">Folio</th>
+<th style="text-align:left;font-family:var(--font-heading);font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:11px 10px">Nombre</th>
+<th style="text-align:left;font-family:var(--font-heading);font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:11px 10px">Vacante</th>
+<th style="text-align:left;font-family:var(--font-heading);font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:11px 10px;width:130px">Score</th>
+<th style="text-align:left;font-family:var(--font-heading);font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:11px 10px">Recomendación</th>
+<th style="text-align:left;font-family:var(--font-heading);font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:11px 10px">Evaluado</th>
+<th style="text-align:left;font-family:var(--font-heading);font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:11px 10px">Entrevista</th>
+</tr>
+</thead>
+<tbody>
+<sc-for list="{{ filas }}" as="c" hint-placeholder-count="8">
+<tr class="cand-row" onClick="{{ c.onOpen }}">
+<td style="padding:12px 10px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px;color:color-mix(in srgb, var(--color-text) 62%, transparent)">{{ c.folio }}</td>
+<td style="padding:12px 10px;font-weight:500">{{ c.nombre }}</td>
+<td style="padding:12px 10px">{{ c.vacante }}</td>
+<td style="padding:12px 10px">
+<div style="display:flex;align-items:center;gap:9px">
+<span style="font-family:var(--font-heading);font-size:19px;width:28px">{{ c.score }}</span>
+<span style="flex:1;height:6px;background:var(--color-neutral-200);display:block;position:relative">
+<i style="position:absolute;left:0;top:0;bottom:0;width:{{ c.scorePct }};background:{{ c.recColor }};display:block"></i>
+</span>
+</div>
+</td>
+<td style="padding:12px 10px">
+<span style="display:inline-flex;align-items:center;gap:7px;font-family:var(--font-heading);font-size:13.5px;letter-spacing:.03em;padding:4px 9px;background:{{ c.recBg }};color:{{ c.recInk }}"><i style="width:7px;height:7px;display:block;background:{{ c.recColor }}"></i>{{ c.recTexto }}</span>
+</td>
+<td style="padding:12px 10px;color:color-mix(in srgb, var(--color-text) 62%, transparent);font-size:13px">{{ c.fecha }}</td>
+<td style="padding:12px 10px;font-size:13px">{{ c.estado }}</td>
+</tr>
+</sc-for>
+</tbody>
+</table>
+<sc-if value="{{ sinResultados }}">
+<div style="padding:34px 10px;text-align:center;color:color-mix(in srgb, var(--color-text) 55%, transparent);font-size:13.5px">Ningún candidato coincide con los filtros.</div>
+</sc-if>
+<p style="margin:16px 0 0;font-size:12.5px;color:color-mix(in srgb, var(--color-text) 55%, transparent)">{{ resumenFilas }}</p>
+</div>
+</sc-if>
+
+<sc-if value="{{ enDetalle }}">
+<div style="padding:22px 28px 56px;max-width:1180px">
+<button class="btn btn-ghost" type="button" onClick="{{ onVolver }}" style="margin-bottom:14px;padding-left:0">← Volver a la lista</button>
+
+<div style="display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:22px;align-items:start">
+
+<div>
+<div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--color-divider)">
+<div>
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:12.5px;color:color-mix(in srgb, var(--color-text) 62%, transparent);margin-bottom:4px">Folio {{ det.folio }}</div>
+<h1 style="font-size:40px;margin:0 0 6px">{{ det.nombre }}</h1>
+<div style="font-size:14px;color:color-mix(in srgb, var(--color-text) 70%, transparent)">{{ det.vacante }} · {{ det.telefono }}</div>
+</div>
+<span style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-heading);font-size:15px;letter-spacing:.04em;padding:6px 12px;background:{{ det.recBg }};color:{{ det.recInk }}"><i style="width:8px;height:8px;display:block;background:{{ det.recColor }}"></i>{{ det.recTexto }}</span>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--color-divider);border-top:0;margin-bottom:22px">
+<div style="padding:14px 16px;border-right:1px solid var(--color-divider)">
+<div style="font-family:var(--font-heading);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 55%, transparent)">Score</div>
+<div style="font-family:var(--font-heading);font-size:32px;line-height:1.1">{{ det.score }}<span style="font-size:15px;color:color-mix(in srgb, var(--color-text) 45%, transparent)">/100</span></div>
+</div>
+<div style="padding:14px 16px;border-right:1px solid var(--color-divider)">
+<div style="font-family:var(--font-heading);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 55%, transparent)">Edad</div>
+<div style="font-family:var(--font-heading);font-size:32px;line-height:1.1">{{ det.edad }}</div>
+</div>
+<div style="padding:14px 16px;border-right:1px solid var(--color-divider)">
+<div style="font-family:var(--font-heading);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 55%, transparent)">RFC</div>
+<div style="font-family:var(--font-heading);font-size:32px;line-height:1.1">{{ det.rfc }}</div>
+</div>
+<div style="padding:14px 16px">
+<div style="font-family:var(--font-heading);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 55%, transparent)">Entrevista</div>
+<div style="font-family:var(--font-heading);font-size:19px;line-height:1.3;margin-top:6px">{{ det.estado }}</div>
+</div>
+</div>
+
+<h3 style="font-size:15px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 8px;color:var(--color-accent-700)">Resumen del perfil</h3>
+<p style="margin:0 0 26px;max-width:62ch;text-wrap:pretty;line-height:1.6">{{ det.resumen }}</p>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;border:1px solid var(--color-divider)">
+<div style="padding:18px;border-right:1px solid var(--color-divider)">
+<h3 style="font-size:14px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 12px">Fortalezas</h3>
+<ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px">
+<sc-for list="{{ det.fortalezas }}" as="f" hint-placeholder-count="3">
+<li style="display:flex;gap:9px;font-size:14px;line-height:1.5"><i style="flex:none;width:7px;height:7px;margin-top:7px;background:#2f6b46;display:block"></i>{{ f }}</li>
+</sc-for>
+</ul>
+</div>
+<div style="padding:18px">
+<h3 style="font-size:14px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 12px">Riesgos</h3>
+<ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px">
+<sc-for list="{{ det.riesgos }}" as="r" hint-placeholder-count="3">
+<li style="display:flex;gap:9px;font-size:14px;line-height:1.5"><i style="flex:none;width:7px;height:7px;margin-top:7px;background:#a33a2e;display:block"></i>{{ r }}</li>
+</sc-for>
+</ul>
+</div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:16px">
+<div class="blueprint" style="padding:18px">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<h3 style="font-size:14px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 10px">Curriculum</h3>
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+<div class="duotone" style="flex:none;width:52px;height:66px;border:1px solid var(--color-divider);background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--color-neutral-700)">PDF</div>
+<div style="font-size:12.5px;color:color-mix(in srgb, var(--color-text) 62%, transparent);word-break:break-all">{{ det.cvUrl }}</div>
+</div>
+<a class="btn btn-secondary" href="{{ det.cvUrl }}" target="_blank" rel="noopener" style="width:100%;box-sizing:border-box">Ver CV original</a>
+</div>
+
+<div class="blueprint" style="padding:18px;background:var(--color-accent-100)">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<h3 style="font-size:14px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 6px">Siguiente paso</h3>
+<p style="margin:0 0 14px;font-size:13.5px;line-height:1.5;color:var(--color-accent-900)">{{ textoAgenda }}</p>
+<button class="btn btn-primary" type="button" onClick="{{ onAbrirAgenda }}" style="width:100%">{{ etiquetaAgenda }}</button>
+</div>
+
+<div style="border:1px solid var(--color-divider);padding:16px 18px">
+<h3 style="font-size:14px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 10px">Trazabilidad</h3>
+<dl style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px;font-size:13px">
+<dt style="color:color-mix(in srgb, var(--color-text) 55%, transparent)">Evaluado</dt><dd style="margin:0">{{ det.fecha }}</dd>
+<dt style="color:color-mix(in srgb, var(--color-text) 55%, transparent)">Fuente</dt><dd style="margin:0">evaluaciones · id {{ det.folio }}</dd>
+<dt style="color:color-mix(in srgb, var(--color-text) 55%, transparent)">Vacante</dt><dd style="margin:0">{{ det.vacanteId }}</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ agendaAbierta }}">
+<div style="position:fixed;inset:0;background:color-mix(in srgb, #1d1f20 55%, transparent);display:flex;align-items:center;justify-content:center;padding:24px;z-index:20">
+<div class="blueprint" style="background:var(--color-bg);width:min(520px,100%);padding:24px 26px">
+<i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<sc-if value="{{ agendaConfirmada }}" hint-placeholder-val="{{ false }}">
+<div>
+<h2 style="font-size:28px;margin:0 0 8px">Entrevista agendada</h2>
+<p style="margin:0 0 8px;font-size:14px;line-height:1.6">Evento creado: <strong>Entrevista - Folio: {{ det.folio }}</strong></p>
+<p style="margin:0 0 20px;font-size:14px;line-height:1.6;color:color-mix(in srgb, var(--color-text) 65%, transparent)">{{ confirmacionTexto }}. El flujo de WhatsApp notificará al candidato al detectar el evento.</p>
+<button class="btn btn-primary" type="button" onClick="{{ onCerrarAgenda }}" style="width:100%">Listo</button>
+</div>
+</sc-if>
+<sc-if value="{{ agendaPendiente }}" hint-placeholder-val="{{ true }}">
+<div>
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:18px">
+<div>
+<h2 style="font-size:28px;margin:0 0 4px">{{ tituloAgenda }}</h2>
+<p style="margin:0;font-size:13px;color:color-mix(in srgb, var(--color-text) 60%, transparent)">{{ det.nombre }} · {{ det.vacante }}</p>
+</div>
+<button class="btn btn-ghost" type="button" onClick="{{ onCerrarAgenda }}" style="font-size:18px;padding:0 4px">✕</button>
+</div>
+
+<div class="field" style="margin-bottom:16px">
+<label style="font-family:var(--font-heading);font-size:12px;letter-spacing:.12em;text-transform:uppercase">Folio del candidato</label>
+<input class="input" type="text" value="{{ det.folio }}" disabled style="width:100%;font-family:ui-monospace,Menlo,monospace">
+</div>
+
+<div class="field" style="margin-bottom:18px">
+<label style="font-family:var(--font-heading);font-size:12px;letter-spacing:.12em;text-transform:uppercase">Fecha</label>
+<input class="input" type="date" value="{{ fecha }}" onChange="{{ onFecha }}" style="width:100%">
+</div>
+
+<div style="margin-bottom:6px;font-family:var(--font-heading);font-size:12px;letter-spacing:.12em;text-transform:uppercase">Hora · bloques de 30 min</div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:8px">
+<sc-for list="{{ horas }}" as="h" hint-placeholder-count="4">
+<button class="slot" type="button" onClick="{{ h.onPick }}" style="font-family:var(--font-heading);font-size:15px;padding:11px 6px;border:1px solid {{ h.borde }};background:{{ h.bg }};color:{{ h.ink }};cursor:pointer">{{ h.label }}</button>
+</sc-for>
+</div>
+<p style="margin:0 0 20px;font-size:12px;color:color-mix(in srgb, var(--color-text) 55%, transparent)">Ventana de entrevistas: 2:00 PM – 4:00 PM.</p>
+
+<div style="display:flex;gap:10px">
+<button class="btn btn-secondary" type="button" onClick="{{ onCerrarAgenda }}" style="flex:1">Cancelar</button>
+<button class="btn btn-primary" type="button" onClick="{{ onConfirmar }}" disabled="{{ confirmarDeshabilitado }}" style="flex:2">Confirmar</button>
+</div>
+</div>
+</sc-if>
+</div>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;densidad&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;cómoda&quot;,&quot;compacta&quot;],&quot;default&quot;:&quot;cómoda&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Vista&quot;}}">
+const REC = {
+  avanzar:  { texto: "Avanzar",             color: "#2f6b46", bg: "#e4efe7", ink: "#20492f" },
+  revisar:  { texto: "Revisar manualmente", color: "#b5891a", bg: "#f6efdc", ink: "#6d5210" },
+  descartar:{ texto: "Descartar",           color: "#a33a2e", bg: "#f4e3e0", ink: "#7a2b21" }
+};
+
+const VACANTES = [
+  { id: "VAC-01", titulo: "Ejecutivo de ventas", salario: "$14,000 – $18,000 + comisiones", requisitos: "Bachillerato · 1 año en venta de mostrador o campo · disponibilidad de horario" },
+  { id: "VAC-02", titulo: "Auxiliar Administrativo", salario: "$11,500 – $13,500", requisitos: "Bachillerato o carrera técnica · manejo de Excel · captura, archivo y atención a proveedores" },
+  { id: "VAC-03", titulo: "Contador (a)", salario: "$22,000 – $28,000", requisitos: "Lic. en Contaduría titulado · CFDI, IMSS y declaraciones mensuales · 3 años de experiencia" },
+  { id: "VAC-04", titulo: "Ayudante General Foráneo", salario: "$10,000 + viáticos", requisitos: "Secundaria · disponibilidad para viajar entre semana · trabajo físico" }
+];
+
+const CANDIDATOS = [
+  { folio: "EV-2418", nombre: "María Fernanda Ramírez", telefono: "+52 811 204 7731", vacante: "Auxiliar Administrativo", vacanteId: "VAC-02", score: 91, rec: "avanzar", fecha: "07 sep 2026, 10:12", estado: "Agendada · 08 sep, 2:30 PM", edad: 27, rfc: "Sí", cv: "storage/cv/ev-2418-ramirez.pdf",
+    resumen: "Tres años como auxiliar administrativa en una comercializadora: captura de facturas, control de archivo y seguimiento a proveedores. Maneja Excel a nivel intermedio con tablas dinámicas. Disponibilidad inmediata y comunicación clara durante la conversación de WhatsApp.",
+    fortalezas: ["Tres años en captura de facturas y control de archivo", "Excel intermedio con tablas dinámicas y formatos de control", "Documentación completa: RFC, IMSS y comprobante de domicilio"],
+    riesgos: ["Sin experiencia en el ERP que usa la empresa", "Última salida por cierre de sucursal: conviene verificar referencia"] },
+  { folio: "EV-2417", nombre: "Jorge Alberto Treviño", telefono: "+52 812 559 0184", vacante: "Contador (a)", vacanteId: "VAC-03", score: 84, rec: "avanzar", fecha: "07 sep 2026, 09:40", estado: "Sin agendar", edad: 34, rfc: "Sí", cv: "storage/cv/ev-2417-trevino.pdf",
+    resumen: "Contador titulado con seis años en despacho y empresa: declaraciones mensuales, timbrado de nómina y conciliaciones bancarias. Conoce el portal del SAT y ha atendido dos revisiones de gabinete. Pretensión salarial ligeramente por encima del rango publicado.",
+    fortalezas: ["Cédula profesional vigente y seis años de experiencia", "Declaraciones mensuales, CFDI y timbrado de nómina", "Ha atendido revisiones del SAT sin observaciones"],
+    riesgos: ["Pretensión salarial 8% arriba del rango de la vacante", "Sin experiencia en el giro industrial de la empresa"] },
+  { folio: "EV-2416", nombre: "Karla Sofía Nava", telefono: "+52 818 771 3390", vacante: "Ejecutivo de ventas", vacanteId: "VAC-01", score: 78, rec: "avanzar", fecha: "06 sep 2026, 17:05", estado: "Agendada · 09 sep, 3:00 PM", edad: 25, rfc: "Sí", cv: "storage/cv/ev-2416-nava.pdf",
+    resumen: "Perfil comercial con dos años en venta de mostrador y seguimiento de cartera por WhatsApp. Cumplió cuota los últimos tres trimestres en su empleo anterior. Sin experiencia en venta industrial B2B.",
+    fortalezas: ["Cumplimiento de cuota sostenido en su último puesto", "Manejo de CRM y seguimiento por mensajería", "Buena redacción y trato en la conversación inicial"],
+    riesgos: ["Sin experiencia en venta industrial ni licitaciones", "Cambió de empleo dos veces en 24 meses"] },
+  { folio: "EV-2415", nombre: "Luis Ángel Domínguez", telefono: "+52 811 903 2266", vacante: "Ayudante General Foráneo", vacanteId: "VAC-04", score: 66, rec: "revisar", fecha: "06 sep 2026, 14:22", estado: "Sin agendar", edad: 41, rfc: "No", cv: "storage/cv/ev-2415-dominguez.pdf",
+    resumen: "Ayudante general con experiencia en obra y maniobras foráneas; acostumbrado a viajar entre semana. No cuenta con RFC ni alta previa en IMSS, lo que requiere revisión de Recursos Humanos antes de continuar.",
+    fortalezas: ["Experiencia en cuadrillas foráneas y trabajo físico", "Disponibilidad total para viajar entre semana", "Buena condición y sin restricciones médicas declaradas"],
+    riesgos: ["Sin RFC: requiere trámite antes de contratación", "Un año sin actividad laboral registrada"] },
+  { folio: "EV-2414", nombre: "Brenda Guadalupe Salas", telefono: "+52 812 118 4407", vacante: "Auxiliar Administrativo", vacanteId: "VAC-02", score: 61, rec: "revisar", fecha: "05 sep 2026, 19:48", estado: "Realizada", edad: 22, rfc: "Sí", cv: "storage/cv/ev-2414-salas.pdf",
+    resumen: "Primer empleo formal, con prácticas de seis meses en el área administrativa de una escuela. Muestra disposición y respuestas consistentes, pero sin experiencia comprobable en el puesto.",
+    fortalezas: ["Prácticas profesionales en área administrativa", "Manejo básico de Excel y paquetería de oficina", "Documentación completa y disponibilidad inmediata"],
+    riesgos: ["Sin experiencia laboral formal", "Requiere capacitación en facturación y control de proveedores"] },
+  { folio: "EV-2413", nombre: "Óscar Iván Peña", telefono: "+52 818 402 9955", vacante: "Ejecutivo de ventas", vacanteId: "VAC-01", score: 58, rec: "revisar", fecha: "05 sep 2026, 12:30", estado: "Sin agendar", edad: 30, rfc: "Sí", cv: "storage/cv/ev-2413-pena.pdf",
+    resumen: "Experiencia en telemarketing y cobranza, sin cierre de venta consultiva. Respuestas breves en la conversación; varios datos quedaron incompletos y se estimaron del CV.",
+    fortalezas: ["Manejo de volumen alto de llamadas", "Familiaridad con metas diarias"],
+    riesgos: ["Sin experiencia en venta consultiva", "Conversación incompleta: faltan disponibilidad y expectativa salarial"] },
+  { folio: "EV-2412", nombre: "Diana Carolina Ibarra", telefono: "+52 811 665 7712", vacante: "Contador (a)", vacanteId: "VAC-03", score: 34, rec: "descartar", fecha: "04 sep 2026, 16:09", estado: "Sin agendar", edad: 29, rfc: "No", cv: "storage/cv/ev-2412-ibarra.pdf",
+    resumen: "Perfil administrativo sin título en Contaduría ni experiencia en declaraciones fiscales. No cumple los requisitos mínimos publicados para la vacante.",
+    fortalezas: ["Experiencia administrativa en captura de datos"],
+    riesgos: ["Sin título ni cédula en Contaduría", "No cumple requisito de 3 años en contabilidad", "Sin RFC"] },
+  { folio: "EV-2411", nombre: "Héctor Manuel Cantú", telefono: "+52 812 330 1188", vacante: "Ayudante General Foráneo", vacanteId: "VAC-04", score: 28, rec: "descartar", fecha: "04 sep 2026, 11:55", estado: "Sin agendar", edad: 19, rfc: "No", cv: "storage/cv/ev-2411-cantu.pdf",
+    resumen: "No tiene disponibilidad para viajar ni experiencia en trabajo foráneo; declaró que sólo puede cubrir turnos locales de medio tiempo. Se sugiere considerarlo para vacantes de apoyo local cuando se abran.",
+    fortalezas: ["Disponibilidad inmediata para turnos locales"],
+    riesgos: ["Sin disponibilidad para viajar entre semana", "Sin experiencia en trabajo foráneo", "Sin RFC"] }
+];
+
+const HORAS = ["2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM"];
+const FILTROS = [
+  { key: "todas", label: "Todas" },
+  { key: "avanzar", label: "Avanzar" },
+  { key: "revisar", label: "Revisar" },
+  { key: "descartar", label: "Descartar" }
+];
+
+class Component extends DCLogic {
+  state = {
+    vista: "vacantes",
+    seleccion: null,
+    busqueda: "",
+    vacante: "todas",
+    rec: "todas",
+    ordenDesc: true,
+    agenda: null,
+    fecha: "2026-09-10",
+    hora: "",
+    confirmada: false,
+    estados: {}
+  };
+
+  fechaLegible() {
+    const [y, m, d] = this.state.fecha.split("-").map(Number);
+    const meses = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+    return `${d} ${meses[m - 1]} ${y}, ${this.state.hora}`;
+  }
+
+  abrir(folio) { this.setState({ vista: "detalle", seleccion: folio }); }
+
+  renderVals() {
+    const s = this.state;
+    const dens = this.props.densidad === "compacta";
+    const listaVacantes = [...new Set(CANDIDATOS.map(c => c.vacante))];
+
+    let filas = CANDIDATOS.filter(c =>
+      (s.vacante === "todas" || c.vacante === s.vacante) &&
+      (s.rec === "todas" || c.rec === s.rec) &&
+      c.nombre.toLowerCase().includes(s.busqueda.trim().toLowerCase())
+    );
+    filas.sort((a, b) => s.ordenDesc ? b.score - a.score : a.score - b.score);
+
+    const fila = c => ({
+      folio: c.folio, nombre: c.nombre, vacante: c.vacante, score: c.score,
+      scorePct: c.score + "%", fecha: c.fecha, estado: s.estados[c.folio] || c.estado,
+      recTexto: REC[c.rec].texto, recColor: REC[c.rec].color,
+      recBg: REC[c.rec].bg, recInk: REC[c.rec].ink,
+      onOpen: () => this.abrir(c.folio)
+    });
+
+    const sel = CANDIDATOS.find(c => c.folio === s.seleccion) || CANDIDATOS[0];
+    const det = {
+      ...fila(sel), telefono: sel.telefono, vacanteId: sel.vacanteId,
+      edad: sel.edad, rfc: sel.rfc, cvUrl: sel.cv, resumen: sel.resumen,
+      fortalezas: sel.fortalezas, riesgos: sel.riesgos
+    };
+
+    const tarjetas = VACANTES.map(v => {
+      const grupo = CANDIDATOS.filter(c => c.vacanteId === v.id);
+      return {
+        id: v.id, titulo: v.titulo, salario: v.salario, requisitos: v.requisitos,
+        total: grupo.length,
+        avanzar: grupo.filter(c => c.rec === "avanzar").length,
+        revisar: grupo.filter(c => c.rec === "revisar").length,
+        descartar: grupo.filter(c => c.rec === "descartar").length,
+        agendadas: grupo.filter(c => (s.estados[c.folio] || c.estado).startsWith("Agendada")).length,
+        mejor: grupo.length ? Math.max(...grupo.map(c => c.score)) : 0,
+        onPick: () => this.setState({ vista: "lista", vacante: v.titulo, rec: "todas", busqueda: "" })
+      };
+    });
+
+    return {
+      enVacantes: s.vista === "vacantes",
+      tarjetas,
+      tituloLista: s.vacante === "todas" ? "Candidatos evaluados" : s.vacante,
+      onVerVacantes: () => this.setState({ vista: "vacantes" }),
+      enLista: s.vista === "lista",
+      enDetalle: s.vista === "detalle",
+      det,
+      filas: filas.map(fila),
+      sinResultados: filas.length === 0,
+      resumenFilas: `${filas.length} de ${CANDIDATOS.length} candidatos · orden por score ${s.ordenDesc ? "descendente" : "ascendente"}${dens ? " · vista compacta" : ""}`,
+      kpiTotal: CANDIDATOS.length,
+      kpiAvanzar: CANDIDATOS.filter(c => c.rec === "avanzar").length,
+      kpiRevisar: CANDIDATOS.filter(c => c.rec === "revisar").length,
+      kpiAgendadas: CANDIDATOS.filter(c => (s.estados[c.folio] || c.estado).startsWith("Agendada")).length,
+      busqueda: s.busqueda,
+      filtroVacante: s.vacante,
+      vacantes: [{ value: "todas", label: "Todas las vacantes" }, ...listaVacantes.map(v => ({ value: v, label: v }))],
+      filtrosRec: FILTROS.map(f => ({
+        label: f.label,
+        bg: s.rec === f.key ? "var(--color-accent)" : "transparent",
+        color: s.rec === f.key ? "var(--color-bg)" : "var(--color-text)",
+        onPick: () => this.setState({ rec: f.key })
+      })),
+      etiquetaOrden: s.ordenDesc ? "Score ↓" : "Score ↑",
+      onBuscar: e => this.setState({ busqueda: e.target.value }),
+      onVacante: e => this.setState({ vacante: e.target.value }),
+      onOrden: () => this.setState({ ordenDesc: !s.ordenDesc }),
+      onVolver: () => this.setState({ vista: "lista" }),
+      agendaAbierta: s.agenda === "abierta",
+      agendaPendiente: s.agenda === "abierta" && !s.confirmada,
+      agendaConfirmada: s.agenda === "abierta" && s.confirmada,
+      confirmacionTexto: s.hora ? this.fechaLegible() : "",
+      etiquetaAgenda: det.estado.startsWith("Agendada") ? "Reagendar entrevista" : "Agendar entrevista",
+      textoAgenda: det.estado.startsWith("Agendada")
+        ? "Entrevista ya agendada: " + det.estado + ". Al reagendar se actualiza el evento en Calendar y el candidato recibe el nuevo aviso por WhatsApp."
+        : "Al confirmar se crea el evento Entrevista - Folio: " + det.folio + " en Calendar y el candidato recibe el aviso por WhatsApp.",
+      tituloAgenda: det.estado.startsWith("Agendada") ? "Reagendar entrevista" : "Agendar entrevista",
+      onAbrirAgenda: () => this.setState({ agenda: "abierta", confirmada: false, hora: "" }),
+      onCerrarAgenda: () => this.setState({ agenda: null, confirmada: false }),
+      onFecha: e => this.setState({ fecha: e.target.value }),
+      fecha: s.fecha,
+      horas: HORAS.map(h => ({
+        label: h,
+        bg: s.hora === h ? "var(--color-accent)" : "transparent",
+        ink: s.hora === h ? "var(--color-bg)" : "var(--color-text)",
+        borde: s.hora === h ? "var(--color-accent)" : "var(--color-divider)",
+        onPick: () => this.setState({ hora: h })
+      })),
+      confirmarDeshabilitado: !s.hora,
+      onConfirmar: () => {
+        if (!this.state.hora) return;
+        const etiqueta = "Agendada · " + this.fechaLegible().replace(/, (\d)/, ", $1").replace(/^(\d+ \w+) \d{4}/, "$1");
+        this.setState(st => ({ confirmada: true, estados: { ...st.estados, [sel.folio]: etiqueta } }));
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
